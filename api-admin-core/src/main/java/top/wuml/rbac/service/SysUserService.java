@@ -11,5 +11,5 @@ import top.wuml.rbac.entity.SysUserEntity;
  */
 public interface SysUserService extends BaseService<SysUserEntity> {
 
-
+    void updatePassword(Long id, String newPassword);
 }
