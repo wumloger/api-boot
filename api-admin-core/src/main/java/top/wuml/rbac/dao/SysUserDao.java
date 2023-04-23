@@ -8,11 +8,14 @@ import top.wuml.rbac.entity.SysUserEntity;
 
 
 /**
- * 系统用户管理 dao
+ * 系统用户 dao
  *
  * @author mqxu
  */
 @Mapper
 public interface SysUserDao extends BaseDao<SysUserEntity> {
 
+    default SysUserEntity getByUsername(String username){
+        return this.selectOne(new QueryWrapper<SysUserEntity>().eq("username", username));
+    }
 }

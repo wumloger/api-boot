@@ -19,7 +19,7 @@ public class SwaggerConfig {
     @Bean
     public GroupedOpenApi userApi() {
         String[] paths = {"/**"};
-        String[] packagedToMatch = {"top.mqxu"};
+        String[] packagedToMatch = {"top.wuml"};
         return GroupedOpenApi.builder().group("api boot")
                 .pathsToMatch(paths)
                 .packagesToScan(packagedToMatch).build();
@@ -28,14 +28,14 @@ public class SwaggerConfig {
     @Bean
     public OpenAPI customOpenApi() {
         Contact contact = new Contact();
-        contact.setName("mqxu@gmail.com");
+        contact.setName("wuml@gmail.com");
 
         return new OpenAPI().info(new Info()
                 .title("接口文档")
                 .description("接口文档")
                 .contact(contact)
                 .version("1.0.0")
-                .termsOfService("https://mqxu.top"));
+                .termsOfService("https://wuml.top"));
     }
 
 }
