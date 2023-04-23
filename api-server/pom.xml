@@ -21,6 +21,11 @@
 
         <dependency>
             <groupId>top.wuml</groupId>
+            <artifactId>api-admin-biz</artifactId>
+            <version>${revision}</version>
+        </dependency>
+        <dependency>
+            <groupId>top.wuml</groupId>
             <artifactId>api-admin-core</artifactId>
             <version>${revision}</version>
         </dependency>
