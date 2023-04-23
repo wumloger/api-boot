@@ -10,6 +10,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 import top.wuml.common.exception.ServerException;
 import top.wuml.rbac.service.SysAuthService;
+import top.wuml.rbac.service.SysCaptchaService;
 import top.wuml.rbac.vo.SysAccountLoginVO;
 import top.wuml.rbac.vo.SysTokenVO;
 import top.wuml.security.cache.TokenStoreCache;
@@ -27,9 +28,15 @@ import top.wuml.security.utils.TokenUtils;
 public class SysAuthServiceImpl implements SysAuthService {
     private final TokenStoreCache tokenStoreCache;
     private final AuthenticationManager authenticationManager;
+    private final SysCaptchaService sysCaptchaService;
 
     @Override
     public SysTokenVO loginByAccount(SysAccountLoginVO login) {
+        boolean flag = sysCaptchaService.validate(login.getKey(),login.getCaptcha());
+        if(!flag){
+            throw new ServerException("验证码错误");
+        }
+
         Authentication authentication;
         try {
             // 用户认证
